@@ -1,0 +1,7 @@
+Actually I didn't write any software to solve this.
+We need to evaluate mcm(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+
+Eliminate common factors and we are left with:
+[11,12,13,14,15,16,17,18,19,20]
+
+Make the product of each number and we have the solution: 232792560
