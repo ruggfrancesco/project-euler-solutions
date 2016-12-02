@@ -1,0 +1,3 @@
+The routes for an m*n grid are equal to '((m*n)! / (m!*n!))'
+In our case the m=n=20, resulting in this calculation: ((20*20)! / (20!*20!))
+Result: 137846528820
