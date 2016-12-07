@@ -1,18 +1,25 @@
 from itertools import permutations
 from math import log10, floor
 
-getint = lambda l: int(''.join(map(str, l)))
-lenn = lambda n: floor(log10(n)+1)
-subn = lambda n, f,t: int(((n % 10**(lenn(n)-f+1)) - (n % 10**(lenn(n)-t+1))) / 10**(lenn(n)-t+1))
+subn = lambda l,d: int(''.join(map(lambda i: l[i], range(d, d+3))))
 
 if __name__ == '__main__':
 	rules, res = [2,3,5,7,11,13,17], 0
 	
-	for perm in permutations(range(10)):
+	for perm in permutations('1406375289'):
+		if not any([subn(perm, d+1) % rule for d,rule in enumerate(rules)]):
+			res += int(''.join(perm))
+
+	'''	
+	#this one is more efficient because we
+	#suddenly stop if a rule is not followed
+	for perm in permutations('1406375289'):
 		for d,rule in enumerate(rules):
-			pi = getint(perm)
-			if subn(pi, d+2,d+5) % rule: break
-		if d==6:
-			res += pi
-			print(pi)
+			if subn(perm, d+1) % rule: break
+			d+=1
+		
+		if d==7:
+			res += int(''.join(perm))
+	'''
+	
 	print('Result:', res)
