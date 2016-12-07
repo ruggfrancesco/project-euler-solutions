@@ -17,8 +17,6 @@ int issquare(int n) {
 void main() {
 	int comp = 3, flag = 1, primes[10000], i = 1, k = 1, sum, sqr, found;
 	
-	//Generate 100 primes and put them in array "primes";
-	primes[0] = 2;
 	while (i < 10000)
 	{
 		k += 2;
