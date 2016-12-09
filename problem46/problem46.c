@@ -2,21 +2,23 @@
 #include <stdlib.h>
 
 isprime(int a) {
- 	if(a==2) return 1;
- 	if(!(a % 2)) return 0;
- 	for(int i = 3; i <= sqrt(a); i += 2)
-		if(!(a % i))
+	if(a==2) return 1;
+ 	if (!(a % 2)) return 0;
+ 	int i;
+ 	for (i = 3; i <= sqrt(a); i += 2)
+		if (!(a % i))
 			return 0;
 	return 1;
 }
 
 int issquare(int n) {
-	return sqrt(n) == (float)sqrt(n);
+	return (int)sqrt(n)==(float)sqrt(n);
 }
 
 void main() {
 	int comp = 3, flag = 1, primes[10000], i = 1, k = 1, sum, sqr, found;
 	
+	primes[0] = 2;
 	while (i < 10000) {
 		k += 2;
 		if (isprime(k)) primes[i++] = k;
@@ -33,10 +35,8 @@ void main() {
 				if (sum >= 0) {
 					if (!(sum % 2)) {
 						sqr = sum / 2;
-						
-						if (issquare(sqr)) {
+						if (issquare(sqr))
 							found = 1;
-						}
 					}
 					i++;
 				}
@@ -50,5 +50,5 @@ void main() {
 		}
 
 	}
-	return 0;
+	
 }
