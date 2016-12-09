@@ -1,0 +1,26 @@
+def freq_chars(lst):
+	d = dict()
+	for i in lst:
+		if i not in d:
+			d[i] = 1
+		else:
+			d[i] += 1
+	
+	#The key is 3 chars long. Get the 3 most common chars
+	return [int(k) for k in sorted(d, key=d.get, reverse=True)][:3]
+
+if __name__ == '__main__':
+	text = open('cipher.txt', 'r').read().strip().split(',')
+	
+	fchars = freq_chars(text)
+	print(fchars)
+	lst = zip(fchars, (103,111,100))#(ord(' '),ord('e'),ord('d')))
+	keys = [c^n for c,n in lst]
+
+	i = 0
+	s = []
+	for c in text:
+		s.append(chr(int(c) ^ keys[i]))
+		i = (i+1) % 3
+	
+	print(''.join(s))
