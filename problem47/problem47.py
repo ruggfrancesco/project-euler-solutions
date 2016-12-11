@@ -1,8 +1,4 @@
-from math import sqrt
-from time import time
-
 cache_memory = dict()
-t = time()
 
 def memoization(F):
 	def wrapper(*args):
@@ -15,7 +11,7 @@ def memoization(F):
 def isprime(n):
 	if n==2: return True
 	if not n%2: return False
-	for i in range(3, int(sqrt(n))+1, 2):
+	for i in range(3, int(n**.5)+1, 2):
 		if not n%i: return False
 	return True
 
@@ -27,13 +23,10 @@ def prime_divisors(n):
 	return n_divisors
 
 if __name__ == '__main__':
-	n = 134000
-	cand = 0
-	threshold = 4
+	n, cand, dfactors= 134000, 0, 4
 	
-	while cand != threshold:
+	while cand != dfactors:
 		n += 1
-		cand = cand+1 if prime_divisors(n)==threshold else 0
+		cand = cand+1 if prime_divisors(n)==dfactors else 0
 	
-	print(list(range(n-(threshold-1), n+1)))
-	print('Time elapsed: {0:.4f}s'.format(time()-t))
+	print('Result:', n-3)

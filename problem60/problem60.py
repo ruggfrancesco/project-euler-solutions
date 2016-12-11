@@ -13,7 +13,7 @@ nlen = lambda n: floor(log10(n)+1)
 merge = lambda x,y: int(x*10**nlen(y)+y)
 
 @memoization
-def myisprime(n):
+def isprime(n):
 	if n==2: return True
 	if not n%2: return False
 	for i in range(3, int(n**.5)+1, 2):
@@ -22,7 +22,7 @@ def myisprime(n):
 
 def check(comb):
 	for perm in permutations(comb, 2):
-		if not myisprime(merge(*perm)):
+		if not isprime(merge(*perm)):
 			return False
 	return True
 
@@ -40,5 +40,5 @@ def findset():
 										return sum([primes[a], primes[b], primes[c], primes[d], primes[e]])
 
 if __name__ == '__main__':
-	primes = list(filter(lambda n: myisprime(n), range(3, 10000)))
+	primes = list(filter(lambda n: isprime(n), range(3, 10000)))
 	print('Result:', findset())
