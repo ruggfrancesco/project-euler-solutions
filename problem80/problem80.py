@@ -1,12 +1,10 @@
 from decimal import *
+getcontext().prec = 102
 
-getcontext().prec=103
-p, tot = 10**99, 0
+def digitSum(n):
+	r = str(Decimal(n**Decimal(.5)))[:101].replace('.','')
+	s = sum(map(int, r))
+	return s if s > 10 else 0
 
-for n in range(2,100):
-	m = Decimal(n).sqrt()*p
-	
-	if m % 1 != 0:
-		tot += sum([int(i) for i in str(m)[:100]])
-	
-print('Result:', tot)
+res = sum(map(digitSum, range(2,100)))
+print('Result:', res)
